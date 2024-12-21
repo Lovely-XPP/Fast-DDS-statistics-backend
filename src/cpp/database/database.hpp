@@ -278,7 +278,7 @@ public:
      *
      * @param domain_id The EntityId of the domain to be erased.
      * @throws eprosima::statistics_backend::BadParameter in the following cases:
-     *            * if the \c EntityId is not of \c DataKind::DOMAIN.
+     *            * if the \c EntityId is not of \c DataKind::DOMAIN_ENTITY.
      *            * if the \c domain_id does not refer to a known domain.
      */
     void erase(

@@ -201,7 +201,7 @@ struct Domain : Entity
     Domain(
             std::string domain_name,
             StatusLevel status = StatusLevel::OK_STATUS) noexcept
-        : Entity(EntityKind::DOMAIN, domain_name, false, true, status)
+        : Entity(EntityKind::DOMAIN_ENTITY, domain_name, false, true, status)
     {
     }
 

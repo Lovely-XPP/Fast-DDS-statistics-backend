@@ -78,7 +78,7 @@ using StatisticsData = std::pair<Timestamp, double>;
  *   ──────────     *          ─────────
  *                  *
  * ┌───────────┐    *     ┌───────────┐
- * │   HOST    │    *     │  DOMAIN   │1
+ * │   HOST    │    *     │  DOMAIN_ENTITY   │1
  * └──┬────────┘    *     └─┬─────────┴─────┐
  *    │1            *       │1              │
  *    │             *       │               │
@@ -122,7 +122,7 @@ enum class EntityKind
     PROCESS,
 
     /// Abstract DDS network by Domain or by Discovery Server
-    DOMAIN,
+    DOMAIN_ENTITY,
 
     /// DDS Topic
     TOPIC,

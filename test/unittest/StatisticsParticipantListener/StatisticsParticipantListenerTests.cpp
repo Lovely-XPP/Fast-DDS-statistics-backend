@@ -2637,7 +2637,7 @@ TEST_F(statistics_participant_listener_tests, new_reader_several_topics)
     std::string another_domain_name = "another_domain";
     std::shared_ptr<Domain> another_domain = std::make_shared<Domain>(another_domain_name);
     EXPECT_CALL(database,
-            get_entities_by_name(EntityKind::DOMAIN, another_domain_name)).Times(AnyNumber())
+            get_entities_by_name(EntityKind::DOMAIN_ENTITY, another_domain_name)).Times(AnyNumber())
             .WillRepeatedly(Return(std::vector<std::pair<EntityId, EntityId>>(1,
             std::make_pair(EntityId(100), EntityId(100)))));
 

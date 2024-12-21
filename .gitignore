@@ -3,6 +3,7 @@
 build
 install
 log
+.DS_Store
 
 # ignore vscode folder
 .vscode

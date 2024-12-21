@@ -194,7 +194,7 @@ int main(
             if (!StatisticsBackend::get_entities(EntityKind::HOST).empty() ||
                     !StatisticsBackend::get_entities(EntityKind::USER).empty() ||
                     !StatisticsBackend::get_entities(EntityKind::PROCESS).empty() ||
-                    !StatisticsBackend::get_entities(EntityKind::DOMAIN).empty() ||
+                    !StatisticsBackend::get_entities(EntityKind::DOMAIN_ENTITY).empty() ||
                     !StatisticsBackend::get_entities(EntityKind::TOPIC).empty() ||
                     !StatisticsBackend::get_entities(EntityKind::PARTICIPANT).empty() ||
                     !StatisticsBackend::get_entities(EntityKind::DATAWRITER).empty() ||
@@ -237,16 +237,16 @@ int main(
                     !StatisticsBackend::get_entities(EntityKind::DATAWRITER).empty() ||
                     !StatisticsBackend::get_entities(EntityKind::DATAREADER).empty() ||
                     !StatisticsBackend::get_entities(EntityKind::LOCATOR).empty() ||
-                    (StatisticsBackend::get_entities(EntityKind::DOMAIN).size() != 1) ||
-                    (StatisticsBackend::get_entities(EntityKind::DOMAIN).begin()->value() != monitor_id))
+                    (StatisticsBackend::get_entities(EntityKind::DOMAIN_ENTITY).size() != 1) ||
+                    (StatisticsBackend::get_entities(EntityKind::DOMAIN_ENTITY).begin()->value() != monitor_id))
             {
                 throw Error("Error: database contains unexpected entities");
             }
-            for (auto entity : StatisticsBackend::get_entities(EntityKind::DOMAIN, monitor_id))
+            for (auto entity : StatisticsBackend::get_entities(EntityKind::DOMAIN_ENTITY, monitor_id))
             {
                 if (!StatisticsBackend::is_active(entity))
                 {
-                    throw Error("Error: DOMAIN with id: " + std::to_string(
+                    throw Error("Error: DOMAIN_ENTITY with id: " + std::to_string(
                                       entity.value()) + " is inactive after init_monitor");
                 }
             }
@@ -290,10 +290,10 @@ int main(
             {
                 throw Error("Error: database contains unexpected PROCESS");
             }
-            else if (StatisticsBackend::get_entities(EntityKind::DOMAIN).size() != 1 ||
-                    StatisticsBackend::get_entities(EntityKind::DOMAIN).begin()->value() != monitor_id)
+            else if (StatisticsBackend::get_entities(EntityKind::DOMAIN_ENTITY).size() != 1 ||
+                    StatisticsBackend::get_entities(EntityKind::DOMAIN_ENTITY).begin()->value() != monitor_id)
             {
-                throw Error("Error: database contains unexpected DOMAIN");
+                throw Error("Error: database contains unexpected DOMAIN_ENTITY");
             }
             else if (StatisticsBackend::get_entities(EntityKind::TOPIC).size() != num_topics ||
                     StatisticsBackend::get_entities(EntityKind::TOPIC, monitor_id).size() != num_topics)
@@ -320,11 +320,11 @@ int main(
             {
                 throw Error("Error: database contains unexpected LOCATOR");
             }
-            for (auto entity : StatisticsBackend::get_entities(EntityKind::DOMAIN, monitor_id))
+            for (auto entity : StatisticsBackend::get_entities(EntityKind::DOMAIN_ENTITY, monitor_id))
             {
                 if (!StatisticsBackend::is_active(entity))
                 {
-                    throw Error("Error: DOMAIN with id: " + std::to_string(
+                    throw Error("Error: DOMAIN_ENTITY with id: " + std::to_string(
                                       entity.value()) + " is inactive after discovering participants");
                 }
             }
@@ -422,10 +422,10 @@ int main(
             {
                 throw Error("Error: database contains unexpected PROCESS");
             }
-            else if (StatisticsBackend::get_entities(EntityKind::DOMAIN).size() != 1 ||
-                    StatisticsBackend::get_entities(EntityKind::DOMAIN).begin()->value() != monitor_id)
+            else if (StatisticsBackend::get_entities(EntityKind::DOMAIN_ENTITY).size() != 1 ||
+                    StatisticsBackend::get_entities(EntityKind::DOMAIN_ENTITY).begin()->value() != monitor_id)
             {
-                throw Error("Error: database contains unexpected DOMAIN");
+                throw Error("Error: database contains unexpected DOMAIN_ENTITY");
             }
             else if (StatisticsBackend::get_entities(EntityKind::TOPIC).size() != num_topics ||
                     StatisticsBackend::get_entities(EntityKind::TOPIC, monitor_id).size() != num_topics)
@@ -452,11 +452,11 @@ int main(
             {
                 throw Error("Error: database contains unexpected LOCATOR");
             }
-            for (auto entity : StatisticsBackend::get_entities(EntityKind::DOMAIN, monitor_id))
+            for (auto entity : StatisticsBackend::get_entities(EntityKind::DOMAIN_ENTITY, monitor_id))
             {
                 if (!StatisticsBackend::is_active(entity))
                 {
-                    throw Error("Error: DOMAIN with id: " + std::to_string(
+                    throw Error("Error: DOMAIN_ENTITY with id: " + std::to_string(
                                       entity.value()) + " is active after undiscovering participants");
                 }
             }
@@ -556,10 +556,10 @@ int main(
             {
                 throw Error("Error: database contains unexpected PROCESS");
             }
-            else if (StatisticsBackend::get_entities(EntityKind::DOMAIN).size() != 1 ||
-                    StatisticsBackend::get_entities(EntityKind::DOMAIN).begin()->value() != monitor_id)
+            else if (StatisticsBackend::get_entities(EntityKind::DOMAIN_ENTITY).size() != 1 ||
+                    StatisticsBackend::get_entities(EntityKind::DOMAIN_ENTITY).begin()->value() != monitor_id)
             {
-                throw Error("Error: database contains unexpected DOMAIN");
+                throw Error("Error: database contains unexpected DOMAIN_ENTITY");
             }
             else if (StatisticsBackend::get_entities(EntityKind::TOPIC).size() != num_topics ||
                     StatisticsBackend::get_entities(EntityKind::TOPIC, monitor_id).size() != num_topics)
@@ -586,11 +586,11 @@ int main(
             {
                 throw Error("Error: database contains unexpected LOCATOR");
             }
-            for (auto entity : StatisticsBackend::get_entities(EntityKind::DOMAIN, monitor_id))
+            for (auto entity : StatisticsBackend::get_entities(EntityKind::DOMAIN_ENTITY, monitor_id))
             {
                 if (StatisticsBackend::is_active(entity))
                 {
-                    throw Error("Error: DOMAIN with id: " + std::to_string(
+                    throw Error("Error: DOMAIN_ENTITY with id: " + std::to_string(
                                       entity.value()) + " is active after stopping monitor");
                 }
             }
@@ -669,7 +669,7 @@ int main(
     //         if (!StatisticsBackend::get_entities(EntityKind::HOST).empty() ||
     //                 !StatisticsBackend::get_entities(EntityKind::USER).empty() ||
     //                 !StatisticsBackend::get_entities(EntityKind::PROCESS).empty() ||
-    //                 !StatisticsBackend::get_entities(EntityKind::DOMAIN).empty() ||
+    //                 !StatisticsBackend::get_entities(EntityKind::DOMAIN_ENTITY).empty() ||
     //                 !StatisticsBackend::get_entities(EntityKind::TOPIC).empty() ||
     //                 !StatisticsBackend::get_entities(EntityKind::PARTICIPANT).empty() ||
     //                 !StatisticsBackend::get_entities(EntityKind::DATAWRITER).empty() ||

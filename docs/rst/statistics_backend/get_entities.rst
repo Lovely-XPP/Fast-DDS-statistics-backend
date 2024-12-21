@@ -165,8 +165,8 @@ This function returns the related entities according to the following table:
   sub-contained, i.e. when asking for all the |HOST-api| related to a |PARTICIPANT-api|, the return will be the
   |HOST-api| in which the |PARTICIPANT-api| is sub-contained.
 * **By DomainParticipant**: The returned entities will be the ones that are related to the entity by which the query is
-  performed through the DomainParticipant, i.e. when asking for all the |HOST-api| related to a |DOMAIN-api|, the result
-  will be all the |HOST-api| that have a |PARTICIPANT-api| running on said |DOMAIN-api|.
+  performed through the DomainParticipant, i.e. when asking for all the |HOST-api| related to a |DOMAIN_ENTITY-api|, the result
+  will be all the |HOST-api| that have a |PARTICIPANT-api| running on said |DOMAIN_ENTITY-api|.
 * **By Endpoints**: The returned entities will be the ones that are related to the entity by which the query is
   performed through the endpoints (|DataReader-api| and |DataWriter-api|), i.e. when asking for all the |LOCATOR-api|
   related to a |TOPIC-api|, the result will be all the |LOCATOR-api| that are used by all the |DataReader-api| and

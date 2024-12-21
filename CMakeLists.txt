@@ -46,13 +46,16 @@ include(${PROJECT_SOURCE_DIR}/cmake/common/asan.cmake)
 ###############################################################################
 set(FASTDDS_MIN_VERSION "3.0.0")
 
-find_package(fastcdr REQUIRED)
-find_package(fastdds ${FASTDDS_MIN_VERSION} REQUIRED)
+add_subdirectory(thirdparty/Fast-DDS)
+# find_package(fastcdr REQUIRED)
+# find_package(fastdds ${FASTDDS_MIN_VERSION} REQUIRED)
 
 ###############################################################################
 # Test system configuration
 ###############################################################################
 set(FORCE_CXX "14" CACHE STRING "C++ standard fulfillment selection")
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 ###############################################################################
 # Warning level
